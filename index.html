@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Blog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    
+    
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Style the body */
+        body {
+            font-family: serif;
+            margin: 0;
+        }
+
+        /* Header/logo Title */
+        header {
+            position: relative;
+            background-color: black;
+            height: 75vh;
+            min-height: 25rem;
+            text-align: center;
+            width: 100%;
+            padding: 120px;
+            color: white;
+            overflow: hidden;
+            font-size: 40px;
+        }
+
+        header video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 0;
+            -ms-transform: translateX(-50%) translateY(-50%);
+            -moz-transform: translateX(-50%) translateY(-50%);
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        header .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        header .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: black;
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+
+
+        @media (pointer: coarse) and (hover: none) {
+            header {
+                background: url('image/look.jpg') black no-repeat center center scroll;
+            }
+
+            header video {
+                display: none;
+            }
+        }
+
+        /* Style the top navigation bar */
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        /* Style the navigation bar links */
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        /* Right-aligned link */
+        .navbar a.right {
+            float: right;
+        }
+
+        /* Change color on hover */
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Column container */
+        .row {
+            display: -ms-flexbox;
+            /* IE10 */
+            display: flex;
+            -ms-flex-wrap: wrap;
+            /* IE10 */
+            flex-wrap: wrap;
+        }
+
+        /* Create two unequal columns that sits next to each other */
+        /* Sidebar/left column */
+        .side {
+            -ms-flex: 8%;
+            /* IE10 */
+            flex: 8%;
+            background-color: #f1f1f1;
+            padding: 10px;
+        }
+
+        /* Main column */
+        .main {
+            -ms-flex: 70%;
+            /* IE10 */
+            flex: 70%;
+            background-color: white;
+            padding: 20px;
+            text-align: justify;
+            line-height: 150%;
+        }
+
+        .heading {
+            text-justify: newspaper;
+        }
+
+        /* Fake image, just for this example */
+        .fakeimg {
+            background-color: #aaa;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .author {
+            background-image: url(image/Krishnaranjani.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .cover {
+            background-image: url(image/securtity.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .img1 {
+            background-image: url(image/dia\ 1.PNG);
+            background-size: initial;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 100%;
+            padding: 160px;
+        }
+
+        .img2 {
+            background-image: url(image/Dia.PNG);
+            background-size: initial;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 100%;
+            padding: 160px;
+        }
+
+        .abc {
+            animation-duration: 3s;
+            animation-name: slidein;
+            animation-iteration-count: 1;
+        }
+
+        @keyframes slidein {
+            from {
+                margin-left: 100%;
+                width: 300%;
+            }
+
+            to {
+                margin-left: 0%;
+                width: 100%;
+            }
+        }
+
+
+
+        /* Footer */
+        .footer {
+            padding: 20px;
+            text-align: center;
+            background: #212529;
+            color: #f2f2f2;
+        }
+
+        .ftext {
+            color: rgb(255, 255, 255);
+            padding: 20px;
+            font-family: serif;
+            font-size: 20px;
+            
+        }
+
+        .icon{
+            color: azure;
+            padding: 20px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 20px;
+        }
+        .nounderline{
+            text-decoration-line: none;
+        }
+
+        table {
+            text-align: center;
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 60%;
+            border: 4px solid #ddd;
+        }
+
+        th {
+            text-align: left;
+            padding: 16px;
+            color: #f1f1f1;
+            background-color: #323539;
+        }
+
+        td {
+            text-align: left;
+            padding: 10px;
+        }
+
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 700px) {
+            .row {
+                flex-direction: column;
+            }
+        }
+
+
+        /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+        @media screen and (max-width: 400px) {
+            .navbar a {
+                float: none;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="overlay"></div>
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+            <source src="video/sea.mp4" type="video/mp4">
+        </video>
+        <div class="container h-100">
+            <div class="d-flex h-100 text-center align-items-center">
+                <div class="w-100 text-white">
+                    <h1 class="display-1">BLOG</h1>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="navbar">
+        <a class="navbar-brand" href="#">KRISHNARANJANI</a>
+    </div>
+
+    <div class="row">
+        <div class="side">
+            <h1>Author</h1>
+            <div class="author" style="height:200px;"></div>
+            <h1>Krishnaranjani</h1>
+            <h2>😃Passionate &nbsp Engineer</h2>
+
+
+
+
+        </div>
+        <div class="main">
+            <h1 class=" heading display-2">Defence on Cyber Crimes Against Women and Laws in India</h1>
+            <h3>A Survey, July 02, 2021</h3>
+
+            <p class="text-justify text-center font-weight-bold"> &nbsp &nbsp &nbsp &nbsp Though crime against women is
+                on a rise in all fields being a casualty of cyber crime might be most traumatic involvement for a woman.
+                Particularly in India where the society looks down upon the woman, and the law doesn’t indeed
+                legitimately perceive cyber crimes. Time is presently here to acquit that our women are secure in cyber
+                world; the memento alarms to halt clowning around activities on web get to because it is an offense and
+                women take umbrage from it. Each moment, one woman in India gets deceived to be a casualty of and the
+                online platform cyber violations and a cyber crime is presently the modern stage where a security,
+                woman’s dignity and security is progressively being challenged each minute. Offense, undermining,
+                Trolling, stalking, voyeurism, body-shaming, slandering, watchfulness, exact retribution porn and
+                numerous other shapes of obscene representation of women are uncontrolled within the cyber world. In
+                this paper we organize to examine upon the diverse sorts of cyber crimes that can be caused upon a
+                woman, and they unfavourably influence her. We shall also briefly examine upon the different laws that
+                exist to secure woman in such cases such as the Information Technology Act (2000).</p>
+            <div class="cover" style="height:200px;"></div>
+
+            <h3 class="abc" align="center"><q> Security used to be an inconvenience sometimes, but now it’s a necessity
+                    all the time. </q> </h3>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <h2>Cyber Crimes Against Women</h2>
+            <p> &nbsp &nbsp &nbsp &nbsp Technical measures to forfend computer systems are being implemented along with
+                licit measures to obviate and deter malefactor deportment. But this technology kens no physical
+                boundaries; it flows more facilely around the world subsequently the malefactors are increasingly
+                located in places other than where their acts engender their effects and Cyberspace is no exception to
+                it. Cyberspace is an incipient horizon controlled by machine for information and any malefactor activity
+                where computer or network is utilized as the source, implement, or target is kenned Cybercrime. The
+                mundane types of cybercrime may be discussed under the following heads: hacking, cyber stalking, cyber
+                pornography, phishing, web jacking, software piracy, and cyber terrorism. Cybercrime against women in
+                India is relatively an incipient concept. When India commenced her peregrination in the field of
+                Information Technology, the priority was given to the aegis of electronic commerce (e-commerce) and
+                communications under Information Technology Act, 2000 whereas cyber socializing communications has
+                remained untouched. The Act turned out to be a moiety baked law as the operating area of the law
+                stretched Cyber Victimization of Women and Cyber Laws in India. The present study is an endeavour to
+                highlight the cyber malefactions against women in India</p>
+            <p></p>
+            <p></p>
+
+            <p>&nbsp &nbsp &nbsp &nbsp Indian women aren't ready to report cybercrimes straightaway as they're not
+                extremely aware on wherever to report such crimes or aren't serious regarding coverage an equivalent
+                thanks to social embarrassment they don’t wish to face.Their mindset needs to broaden and they must be
+                the whip to curb down by taking derring-do against such perpetrators that is to go ahead and lodge an
+                immediate complaint. Most of the issues will be resolved if women report the crime right away and warn
+                the wrongdoer concerning taking robust action.</p>
+            <p></p>
+            <p></p>
+
+            <p>&nbsp &nbsp &nbsp &nbsp Cybercrimes intent typically through fake ids created on Facebook, Twitter and
+                different social media platforms inflicting grave injury to women, as through these platforms, major
+                blackmailing, threatening, bullying, or cheating via person messages and email unit of measurement done
+                by perpetrators. Ill-intentioned men act these cyber-crimes with malafide intention like smuggled gain,
+                revenge, insult to the modesty of a woman, extortion, blackmailing, sexual exploitation, defamation,
+                incite hate against the community, and prank satisfaction of acquiring and to steal data</p>
+            <p></p>
+            <p></p>
+            <h2>Major Cyber Crime Areas</h2>
+            <p> &nbsp &nbsp &nbsp &nbsp Some of the most important well-known cybercrimes have place thousands of girls
+                into varied health problems like depression, cardiovascular disease and women suffer from anxiety,
+                cardiomyopathy, diabetic and thyroid ailments because of e-harassment. Major cyber crimes area unit as
+                under,</p>
+            <h3>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; Cyber stalking</h3>
+            <h3>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; Defamation</h3>
+            <h3>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; Morphing </h3>
+            <h3>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; Cyber Pornography</h3>
+            <h3>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; E-mail spoofing</h3>
+            <h3>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; Trolling</h3>
+
+            <p></p>
+            <p></p>
+
+            <h2>Cyber Law under the Information and Technology Act, 2000</h2>
+            <p>&nbsp &nbsp &nbsp &nbsp The stalkers and cybercriminals can be booked under several sections for
+                breaching of privacy. Section 67 deals with publishing or transmitting obscene material in electronic
+                form. The earlier section in ITA was later widened as per ITAA 2008 in which child pornography and
+                retention of records by intermediaries were all included.</p>
+            <p></p>
+            <p></p>
+            <h3>a) Section 66A</h3>
+            <p></p>
+            <p></p>
+            <p>&nbsp &nbsp &nbsp &nbsp Sending offensive messages through communication service, inflicting annoyance
+                etc., through associate transmission or causing associate email to mislead or deceive the recipient
+                regarding the origin of such messages normally referred to as IP or email spoofing area unit all coated
+                here. Punishment for these acts is imprisonment up to three years or fine. </p>
+            <p></p>
+            <p></p>
+            <h3> b) Section 66B</h3>
+            <p></p>
+            <p></p>
+            <p>&nbsp &nbsp &nbsp &nbsp Dishonestly receiving taken computer resource or communication device with social
+                control up to a few years or one large integer rupees as fine or each.</p>
+            <p></p>
+            <p></p>
+            <h3> c) Section 66D</h3>
+            <p></p>
+            <p></p>
+            <p>&nbsp &nbsp &nbsp &nbsp Cheating by person on victimization computer resource or a communication device
+                shall be reprimanded with imprisonment of either description for a term that extends to 3 years and
+                shall even be at risk of fine which can touch one 100000 rupees.</p>
+            <p></p>
+            <p></p>
+            <h3> d) Section 66E</h3>
+            <p></p>
+            <p></p>
+            <p>&nbsp &nbsp &nbsp &nbsp Privacy violation-Publishing or transmittal non-public space of somebody while
+                not his or her consent etc. penalisation is 3 years imprisonment or 2 hundred thousand rupees fine or
+                each.</p>
+            <p></p>
+            <p></p>
+            <h3>e) Section 66F</h3>
+            <p></p>
+            <p></p>
+            <p>&nbsp &nbsp &nbsp &nbsp Cyber terrorism – intent to threaten the unity, integrity, security or
+                sovereignty of the state and denying access to anyone licensed to get access to personal resource or
+                trying to penetrate or access a computer resource while not authorization.</p>
+            <p></p>
+            <p></p>
+            <h3> f) Section 72</h3>
+            <p></p>
+            <p></p>
+            <p>&nbsp &nbsp &nbsp &nbsp Punishment for breaching one’s space and confidentiality.</p>
+            <p></p>
+            <p></p>
+            <h3> g) Section 72A</h3>
+            <p></p>
+            <p></p>
+            <p>&nbsp &nbsp &nbsp &nbsp Punishment for revealing data throughout lawful contract.</p>
+            <p></p>
+            <p></p>
+            <h3> h) Section 441 IPC</h3>
+            <p></p>
+            <p></p>
+            <p>&nbsp &nbsp &nbsp &nbsp This section deals with criminal misdemeanour.</p>
+            <p></p>
+            <p></p>
+            <h3> i) Section 354D</h3>
+            <p></p>
+            <p></p>
+            <p>&nbsp &nbsp &nbsp &nbsp This section deals with stalking. It defines stalker as a person who follows
+                women and tries to contact such woman, monitors each activity undertaken by the girl whereas
+                mistreatment digital media.</p>
+            <p></p>
+            <p></p>
+            <h2>Major Cyber Crime Areas</h2>
+            <p></p>
+            <p></p>
+            <p>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; Don’t share passwords</p>
+            <p3>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; Don’t leave your webcam
+                connected</p>
+                <p>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; Don’t share more than
+                    necessary</p>
+                <p>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; Don’t meet on-line
+                    acquaintances alone</p>
+                <p>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; Update all operating systems
+                    on your devices</p>
+                <p>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; Secure your devices with
+                    anti-virus software</p>
+                <p>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; Perused the fine print</p>
+                <p>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; There's no such thing as
+                    ‘freebies’</p>
+                <p3>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; Block individuals you don’t
+                    need to interact with</p>
+                    <p></p>
+                    <p></p>
+                    <h2>Reporting a cyber crime</h2>
+                    <p></p>
+                    <p></p>
+                    <p>&nbsp &nbsp &nbsp &nbsp The strategy for news cyber violations is extra or less a proportionate
+                        as for news the other very offense. The nearby police stations can be approached for recording
+                        complaints fair as the cyber crime cells specially assigned with the jurisdiction to enlist
+                        complaint. In addition, provisions have now been made for filing of 'E-FIR' in most of the
+                        states. Women security is a must and the police in our nation must be well prepared to resolve
+                        complaints of cyber crime made by women and cognizance of the same must be taken very seriously.
+                    </p>
+                    <p></p>
+                    <p></p>
+                    <p>&nbsp &nbsp &nbsp &nbsp Each police station must have expert-trained police officer who can
+                        quickly bargain with cyber crime complaints made. In case a police station denies enlist the
+                        complaint, a representation may be given to the commissioner of police/superintendent of police.
+                        If in spite of that action isn't taken, the following step seem either be a private complaint
+                        before the concerned court or a summons before the high court. “If There's Cyber Crime, Women
+                        Begin Reporting Right Now” </p>
+                    <p></p>
+                    <p></p>
+
+                    <div class="img1" style="height:20px;"></div>
+                    <p align="center">Fig 1. Reasons for Cyber Attacks</p>
+
+
+                    <p></p>
+                    <p></p>
+                    <h2>Targets for cyber attackers</h2>
+                    <p></p>
+                    <p></p>
+                    <p>&nbsp &nbsp &nbsp &nbsp There are different frameworks and innovations that are being focused on
+                        by attackers, using multiple attack measures. There is steady development towards targeted
+                        attacks, which is expanding the like hood of attacks to take place.</p>
+                    <p></p>
+                    <p></p>
+
+                    <table align="center">
+                        <thead>
+                            <tr>
+                                <th>Targeted Attacks</th>
+                                <th>Percentage(%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Identity impersonation</td>
+                                <td>22%</td>
+                            </tr>
+                            <tr>
+                                <td>Phishing attacks</td>
+                                <td>61%</td>
+                            </tr>
+                            <tr>
+                                <td>E-mail based attack</td>
+                                <td>75%</td>
+                            </tr>
+                            <tr>
+                                <td>Malware/Ransom ware</td>
+                                <td>69%</td>
+                            </tr>
+                            <tr>
+                                <td>Web-Based applications</td>
+                                <td>33%</td>
+                            </tr>
+                            <tr>
+                                <td>Vulnerabilities associated with system</td>
+                                <td>22%</td>
+                            </tr>
+                            <tr>
+                                <td>Physical theft of computing devices</td>
+                                <td>22%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p></p>
+                    <p align="center">Table 1 . Targets for Cyber Attackers </p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <h2> Measures needed to Reduce Cyber Crimes </h2>
+                    <p></p>
+                    <p></p>
+                    <p>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; Drafting of National Cyber Security Policy of India as soon as possible.</p>
+                    <p>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; Dedicated cyber security laws in India keeping in mind contemporary cyber security threat.</p>
+                    <p>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; Cyber security awareness must be improved in order to involve all the stakeholders for the implementation of cyber security initiatives of GOI.</p>
+                    <p>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; Greater emphasis on R&D of indigenous security technology.</p>
+                    <p>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; PPP VIA a VIS technical and operational co-operation aimed at encouraging organisation to adopt individually tailored IT regulations </p>
+                    <p>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9642; Creation of new agency such as National Critical Information Infrastructure Protection Centre to charge with protecting assets in sensitive areas</p>
+                    <p></p>
+                    <p></p>
+                    <h2> Most affected </h2>
+                    <p></p>
+                    <p></p>
+                    <p>&nbsp &nbsp &nbsp &nbsp A major consequence of online abuse is the silencing effect it has on
+                        women, sometimes forcing them to shut themselves out of online spaces. A survey by Feminism in
+                        India, a digital platform, found that 28% of women who experienced online abuse said they
+                        intentionally reduced their online presence. Amnesty International conducted a study on online
+                        violence against women in 2017 which showed that more than 75% of women surveyed across eight
+                        countries (Denmark, Italy, New Zealand, Poland, Spain, Sweden, the UK and USA) who had
+                        experienced abuse or harassment made changes to the way they used social media platforms. A
+                        third of women said they even stopped posting their opinion on certain issues altogethe </p>
+                    <p></p>
+                    <p></p>
+                    <p>&nbsp &nbsp &nbsp &nbsp Women often find it difficult to report online abuse to the police for
+                        several reasons, ranging from not knowing the law to not trusting the criminal justice system.
+                        Of the women surveyed by Feminism in India who reported harassment to the authorities, only one
+                        in ten said they had received a helpful response. The National Crime Records Bureau says that
+                        around 12,000 incidents of cyber-crimes were reported in 2016, and nearly the same number that
+                        were reported the previous year were still pending investigation.</p>
+                    <p></p>
+                    <p></p>
+                    <p>&nbsp &nbsp &nbsp &nbsp Social media platforms, which are uniquely positioned to take quick and
+                        effective action against abusers, are also known to fail to act. Amnesty’s survey indicated that
+                        women feel social media companies need to do more. Just 18% of women polled across all countries
+                        said that the responses of social media companies were very, fairly or completely adequate. In
+                        India, there have been a number of reports in the media about women who reported online abuse to
+                        social media platforms, but received highly unsatisfactory responses</p>
+                    <p></p>
+                    <p></p>
+                    <div class="img2" style="height:20px;"></div>
+                    <p align="center">Fig 2.Top Five Attacks Faced</p>
+
+                    <h1> Cybercrime Tools</h1>
+                    <p></p>
+                    <p></p>
+                    <h2> Analysis Tools</h2>
+                    <p></p>
+                    <p></p>
+                    <p>&nbsp &nbsp &nbsp &nbsp These tools are utilized to measure hazard. They measure what an incident
+                        did and how it was done and what the results were. Cases of investigation tools include the
+                        Coroners Toolkit that runs beneath NIX and Encase that runs beneath windows.</p>
+                    <p></p>
+                    <p></p>
+                    <p>&nbsp &nbsp &nbsp &nbsp These include a specialized awareness through information of specialized
+                        suggestions of activities, an understanding of how data can be modified, cleverness,
+                        open-mindedness, deviousness, a tall standard of morals, proceeding instruction and the utilize
+                        of excess information sources. In case one doesn’t altogether get it or meet the over
+                        necessities, the framework can be left distant more regrettable than when at first compromised
+                        from a legal angle. It is like a activity cop investigating a murder scene. I would deliver a
+                        case of one of the told” EcCase”. It gives a recognizable Windows Explorer fashion view. The
+                        view shows records without changing them in any way, counting free space that contains erased
+                        records. The see sheet is additionally exceptionally supportive when sorting through many
+                        records. It contains a solid Report see which offer assistance agents construct a case as they
+                        continue. It too permits point and tap record hashing; a priceless apparatus to verify records
+                        afterward.</p>
+                    <p></p>
+                    <p></p>
+                    <p>&nbsp &nbsp &nbsp &nbsp The reason of the ultimate organ of the cyber crimes division is to
+                        police the web to guarantee that certain cyber crimes can be stopped some time recently their
+                        commission. For this reason, the Network Monitoring Centre has been provided with a Network
+                        Monitoring Tool, created by I.I.T. Kanpur. It is additionally utilized to permit comparative
+                        devices to attain such a purpose.</p>
+                    <p></p>
+                    <p></p>
+                    <h2> Machine Learning & Deep Learning based Tools</h2>
+                    <p></p>
+                    <p></p>
+                    <h3>A) SIEM tool</h3>
+                    <p></p>
+                    <p></p>
+                    <p>&nbsp &nbsp &nbsp &nbsp Machine Learning & Deep Learning based SIEM tool for numerous
+                        professionals, SOC still implies SIEM tool and security observing and to a few degrees that's
+                        redress as the SIEM tool acts as a core engine of the SOC, which collects the logs from the
+                        integrated log sources, forms those logs as per the predefined rule and give the alerts</p>
+                    <p></p>
+                    <p></p>
+                    <p>&nbsp &nbsp &nbsp &nbsp Since the beginning of the SIEM tool security engineers/analysts are
+                        putting in parts of distinctive rules to screen and relate the log information pumped into the
+                        SIEM instrument. These rules are included one by one as per the environment necessities</p>
+                    <p></p>
+                    <p></p>
+                    <p>&nbsp &nbsp &nbsp &nbsp Since of the amount of log data that must be prepared by the SIEM
+                        apparatus, it is impossible to generate the rule that can distinguish the anomalies. The next
+                        generation SIEM tools will be utilizing machine learning which is basically marrying the rules
+                        or algorithms with the measurements that can be utilized for making knowledge-based, intelligent
+                        investigation that will deliver prescient noteworthy results </p>
+                    <p></p>
+                    <p></p>
+                    <h3>B) Wearing the Hackers Hat — AI primarily based Sandbox</h3>
+
+                    <p>&nbsp &nbsp &nbsp &nbsp Hackers are constantly ahead of security defence bunches, utilize the
+                        innovation to perform investigation of focused on client’s environment to spot the
+                        vulnerabilities to anticipate exploitability. This same technique security analyst will use by
+                        utilizing AI and ML-based sandboxing tool, which will be a proactive approach and a defensive
+                        one too. this could offer knowledge-based inputs to the analyst to counter the probable security
+                        attacks and shield the system from potential security risks.</p>
+                    <p></p>
+                    <p></p>
+                    <p>&nbsp &nbsp &nbsp &nbsp A Security Operations Centre (SOC) is characterised each as a group,
+                        typically operating in shifts round the clock, and a facility dedicated to and arranged to stop,
+                        detect, judge and respond to cyber security threats and incidents, and to fulfil and survey
+                        administrative compliance.</p>
+                    <p></p>
+                    <p></p>
+                    <p>&nbsp &nbsp &nbsp &nbsp All these progressions within the innovation zone don't dispose of the
+                        require for making the natural educated decisions by the human brain. We still need to have
+                        security investigator to see into the occurrences and finalize the activity plan. The life of
+                        these analysts will be made simple by liberating them from the tedious unremarkable tasks and
+                        they can utilize their time and intelligence in characterizing and executing the occurrence
+                        reaction arrange to decrease the impact.</p>
+                    <p></p>
+                    <p></p>
+                    <h3>C) AI and machine learning can boost cyber defences </h3>
+                    <p></p>
+                    <p></p>
+                    <p>&nbsp &nbsp &nbsp &nbsp As artificial intelligence and machine learning gathers pace, and begins
+                        to affect increasingly businesses, it’s beyond any doubt to play a greater part in cyber
+                        security. Since the fight with cyber criminals moves so rapidly, machine learning models that
+                        can anticipate and accurately identify attacks quickly may well be a genuine boon for InfoSec
+                        experts. These models got to be prepared and sharpened. In any case, there's moreover a risk
+                        that AI and machine learning may be misused by attackers </p>
+                    <p></p>
+                    <p></p>
+
+                    <p>&nbsp &nbsp &nbsp &nbsp According to a survey every month 7000 cyber crimes are happened, but in
+                        national crime record bureau less than 1000 crimes have been reported. So, there is huge
+                        mismatch between actual crime happen and crimes reported. Cybercrime reporting in India is still
+                        in its nascent stage though cyber violence is fast growing. Our laws need to be changed to make
+                        them cyber-sensitive as well as gender-sensitive. Words like lascivious and prurient should be
+                        dropped from the concerned Act to make them better secure women’s equality and dignity. The
+                        perspective of the laws should be to ensure dignity of women and not being in a paternalistic
+                        role. Cybercrimes against women needs a holistic approach with change in laws, change in
+                        approach of officials and more intense sensitization campaigns involving different sections of
+                        society. Indian women netizens are still not open to quickly report the cyber mishandle or
+                        cyber-crime. This nature gives the guilty parties the chance to elude after the commission of
+                        cyber-crime. The issue would be unravelled only when the victimized woman at that point and
+                        there report back or indeed caution the abuser around taking strong activities. </p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <h2>Author: Krishnaranjani</h2>
+
+        <p  class="icon">
+        🌐 <a  class= "ftext nounderline" href="https://github.com/KrishnaRanjani"> Github</a>    🎯<a  class= "ftext nounderline" href="https://www.linkedin.com/in/krishnaranjani/">LinkedIn</a>   📧<a  class= "ftext nounderline" href="mailto:rkrishnaranjani12@gmail.com">Contact</a>    📚<a  class= "ftext nounderline "href="#">Blog</a>
+        </p>
+
+        <br>
+        <div  class= "ftext" >© 2021 Copyright</div>
+
+    </div>
+
+</body>
+
+</html>
