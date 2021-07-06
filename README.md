@@ -30,7 +30,7 @@
 ## Cyber Law under the Information and Technology Act, 2000
 
 
-#### The stalkers and cybercriminals can be booked under several sections for breaching of privacy. 
+#### :balance_scale: The stalkers and cybercriminals can be booked under several sections for breaching of privacy. 
 * `Section 66A: Sending offensive messages.`
 * `Section 66B : Dishonestly receiving taken computer resource.`
 * `Section 66D : Cheating by person on victimization compute resource.`
